@@ -17,7 +17,7 @@ jobs:
           python-version: "3.12"
           cache: poetry
       - name: Install dependencies
-        run: poetry install --group dev
+        run: poetry install --with dev
 
       # Ensure the code is clean
       - name: Lint code
