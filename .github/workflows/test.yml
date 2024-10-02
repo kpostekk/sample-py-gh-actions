@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # Setup environment
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -17,8 +19,14 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
-      - name: Simulate training
-        run: touch accuracy.txt
+      # Ensure the code is clean
+      - name: Lint code
+        run: pylint my_ml
 
+      # Run code
+      - name: Simulate training
+        run: python my_ml/main.py
+
+      # Evaluate the results
       - name: Display training results
         run: cat accuracy.txt

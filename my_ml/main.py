@@ -1,2 +1,4 @@
-if __name__ == '__main__':
-    print('Hello, World!')
+"""Sample module"""
+
+with open("accuracy.txt", "w", encoding="utf8") as f:
+    f.write("1.0")
