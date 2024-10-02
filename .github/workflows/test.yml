@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: poetry
+      - name: Install poetry
+        run: pipx install poetry
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Simulate training
+        run: touch accuracy.txt
+
+      - name: Display training results
+        run: cat accuracy.txt
