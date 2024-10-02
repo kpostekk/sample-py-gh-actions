@@ -16,6 +16,9 @@ pandas = "^2.2.3"
 black = "^24.8.0"
 pylint = "^3.3.1"
 
+[tool.poetry.group.ci.dependencies]
+pylint = "^3.3.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
