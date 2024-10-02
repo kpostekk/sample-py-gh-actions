@@ -15,7 +15,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install poetry
-        run: pipx install poetry
+        run: pipx install poetry --python 3.12
 
       - name: Configure poetry
         run: poetry config virtualenvs.create false
