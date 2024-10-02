@@ -12,10 +12,15 @@ jobs:
       # Setup environment
       - name: Install poetry
         run: pipx install poetry
+      
+      - name: Configure poetry
+        run: poetry config virtualenvs.create false
+        
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: poetry
+      
       - name: Install dependencies
         run: poetry install --with dev
 
