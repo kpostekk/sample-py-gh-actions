@@ -4,7 +4,7 @@ on:
       - main
 
 jobs:
-  train-model:
+  install:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,11 +22,18 @@ jobs:
 
       - name: Install dependencies
         run: poetry install --with ci
-
+  lint:
+    runs-on: ubuntu-latest
+    needs: [install]
+    steps:
       # Ensure the code is clean
       - name: Lint code
         run: pylint my_ml
-
+  
+  train:
+    runs-on: ubuntu-latest
+    needs: [install]
+    steps:
       # Run code
       - name: Simulate training
         run: python my_ml/main.py
